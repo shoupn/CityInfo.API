@@ -13,17 +13,20 @@ namespace CityInfo.API.Controllers
         //[Route("api/[controller]")] Can be used but if class changes URI changes 
 
         [HttpGet()]
-        public JsonResult GetCities()
+        public IActionResult GetCities()
         {
-            return new JsonResult(CitiesDataStore.Current.Cities);
+            return Ok(CitiesDataStore.Current.Cities);
         }
 
         [HttpGet("{id}")]
-        public JsonResult GetCity(int id)
+        public IActionResult GetCity(int id)
         {
-            return new JsonResult(
-                CitiesDataStore.Current.Cities.FirstOrDefault(c => c.Id == id)
-            );
+            var cityToReturn = CitiesDataStore.Current.Cities.FirstOrDefault(c => c.Id == id);
+            if(cityToReturn == null)
+            {
+                return NotFound();
+            }
+            return Ok(cityToReturn);
         }
 
    

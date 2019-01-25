@@ -19,22 +19,51 @@ namespace CityInfo.API
                 {
                     Id = 1,
                     Name = "New York",
-                    Description = "Has a big park"
+                    Description = "Has a big park",
+                    PointsOfInterest = new List<PointsOfInterestDto>()
+                    {
+                        new PointsOfInterestDto()
+                        {
+                            Id = 1,
+                            Name = "Central Park",
+                            Description = " Well Liked Park"
+                        }
+                    }
                 },
                 new CityDto()
                 {
                     Id = 2,
                     Name = "Antwerp",
-                    Description = "Has a big cathedral that was never finished"
+                    Description = "Has a big cathedral that was never finished", 
+                    PointsOfInterest = new List<PointsOfInterestDto>()
+                    {
+                        new PointsOfInterestDto()
+                        {
+                            Id = 1, 
+                            Name = "Central Park",
+                            Description = " Well Liked Park"
+                        }
+                    }
                 },
                 new CityDto()
                 {
                     Id = 3,
                     Name = "Paris",
-                    Description = "Has a big tower"
+                    Description = "Has a big tower",
+                    PointsOfInterest = new List<PointsOfInterestDto>()
+                    {
+                        new PointsOfInterestDto()
+                        {
+                            Id = 1,
+                            Name = "Central Park",
+                            Description = " Well Liked Park"
+                        }
+                    }
                 }
 
             };
+
+
         }
     }
 }
