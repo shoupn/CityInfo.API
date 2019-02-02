@@ -23,7 +23,7 @@ namespace CityInfo.API
         public Startup(IConfiguration configuration) //IHostingEnvironment enc
         {
             Configuration = configuration;
-
+            ////This is if working on an ASP.NET Core 1.0
             //var builder = new ConfigurationBuilder()
             //    .SetBasePath(env.ContentRootPath)
             //    .AddJsonFile("appSettings.json", optional: false, reloadOnChange: true)
