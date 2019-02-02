@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Formatters;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using NLog.Extensions.Logging;
@@ -15,6 +16,22 @@ namespace CityInfo.API
 {
     public class Startup
     {
+        //This is for asp.net 1.0 web api
+        //public static IConfigurationRoot Configuration;
+        //dotnet core 2.0 uses the more generic IConfiguration Like so
+        public static IConfiguration Configuration;
+        public Startup(IConfiguration configuration) //IHostingEnvironment enc
+        {
+            Configuration = configuration;
+
+            //var builder = new ConfigurationBuilder()
+            //    .SetBasePath(env.ContentRootPath)
+            //    .AddJsonFile("appSettings.json", optional: false, reloadOnChange: true)
+            //    .AddJsonFile($"appSettings.{env.EnvironmentName}.json", optional:true, reloadOnChange:true);
+            //
+            //Configuration = builder.Build();
+        }
+
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
