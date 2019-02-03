@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CityInfo.API.Entities;
 using CityInfo.API.MailService;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -11,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using NLog.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
 
 namespace CityInfo.API
 {
@@ -40,6 +42,9 @@ namespace CityInfo.API
             services.AddMvc();
             // .AddMvcOptions(o => o.OutputFormatters.Add( new XmlDataContractSerializerOutputFormatter()));
             //older legacy application may need to modfiy json serialize options here
+            var connection = @"Server=(localdb)\mssqllocaldb;Database=CityInfoDB;Trusted_Connection=True;ConnectRetryCount=0";
+            services.AddDbContext<CityInfoContext>(o => o.UseSqlServer(connection));
+ 
 #if DEBUG
             services.AddTransient<IMailService, LocalMailService>();
 #else
