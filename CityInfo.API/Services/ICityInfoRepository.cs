@@ -8,12 +8,13 @@ namespace CityInfo.API.Services
 {
     public interface ICityInfoRepository
     {
-        IEnumerable<City> GetCities ();
-
+        bool CityExists(int cityId);
+        IEnumerable<City> GetCities();
         City GetCity(int cityId, bool includePointsOfInterest);
-
-        IEnumerable<PointOfInterest> GetPointsOfInterest(int cityId);
-
-        PointOfInterest GetPointOfInterest(int cityId, int pointOfInterestId);
+        IEnumerable<PointOfInterest> GetPointsOfInterestForCity(int cityId);
+        PointOfInterest GetPointOfInterestForCity(int cityId, int pointOfInterestId);
+        void AddPointOfInterestForCity(int cityId, PointOfInterest pointOfInterest);
+        void DeletePointOfInterest(PointOfInterest pointOfInterest);
+        bool Save();
     }
 }

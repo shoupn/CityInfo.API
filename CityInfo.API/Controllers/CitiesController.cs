@@ -24,17 +24,7 @@ namespace CityInfo.API.Controllers
         {
             //return Ok(CitiesDataStore.Current.Cities);
             var citiesEntities = _cityInfoRepository.GetCities();
-
-            var results = new List<CityWithoutPointsOfInterestDto>();
-
-            foreach (var city in citiesEntities)
-            {
-                results.Add(new CityWithoutPointsOfInterestDto {
-                    Id = city.Id,
-                    Name = city.Name,
-                    Description = city.Description
-                });
-            }
+            var results = AutoMapper.Mapper.Map<IEnumerable<CityWithoutPointsOfInterestDto>>(citiesEntities);
             return Ok(results);
         }
 
@@ -48,36 +38,13 @@ namespace CityInfo.API.Controllers
                 return NotFound();
             }
 
-
             if (includePointsOfInterest)
             {
-                var cityResult = new CityDto()
-                {
-                    Id = city.Id,
-                    Name = city.Name,
-                    Description = city.Description
-                };
-
-                foreach (var poi in city.PointsOfInterest)
-                {
-                    cityResult.PointsOfInterest.Add(
-                    new PointsOfInterestDto()
-                    {
-                        Id = poi.Id,
-                        Name = poi.Name,
-                        Description = poi.Description
-                    });
-                }
+                var cityResult = AutoMapper.Mapper.Map<CityDto>(city);
                 return Ok(cityResult);
             }
 
-            var cityResultWithoutPoi = new CityWithoutPointsOfInterestDto()
-            {
-                Id = city.Id,
-                Name = city.Name,
-                Description = city.Description
-            };
-
+            var cityResultWithoutPoi = AutoMapper.Mapper.Map<CityWithoutPointsOfInterestDto>(city);
             return Ok(cityResultWithoutPoi);
         }
     }

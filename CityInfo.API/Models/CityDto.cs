@@ -12,8 +12,8 @@ namespace CityInfo.API.Models
         public string Description { get; set; }
 
 
-        public List<PointsOfInterestDto> PointsOfInterest { get; set; }
-            = new List<PointsOfInterestDto>(); //using C# 6 new auto initialize property
+        public List<PointOfInterestDto> PointsOfInterest { get; set; }
+            = new List<PointOfInterestDto>(); //using C# 6 new auto initialize property
 
         public int NumberOfPointsOfInterest
         {

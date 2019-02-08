@@ -76,7 +76,9 @@ namespace CityInfo.API
             AutoMapper.Mapper.Initialize(cfg =>
             {
                 cfg.CreateMap<City, CityWithoutPointsOfInterestDto>();
-
+                cfg.CreateMap<City, CityDto>();
+                cfg.CreateMap<PointOfInterest, PointOfInterestDto>();
+                cfg.CreateMap<PointOfInterest, PointsOfInterestUpdateDto>();
             });
 
             app.UseMvc();

@@ -20,9 +20,9 @@ namespace CityInfo.API
                     Id = 1,
                     Name = "New York",
                     Description = "Has a big park",
-                    PointsOfInterest = new List<PointsOfInterestDto>()
+                    PointsOfInterest = new List<PointOfInterestDto>()
                     {
-                        new PointsOfInterestDto()
+                        new PointOfInterestDto()
                         {
                             Id = 1,
                             Name = "Central Park",
@@ -35,9 +35,9 @@ namespace CityInfo.API
                     Id = 2,
                     Name = "Antwerp",
                     Description = "Has a big cathedral that was never finished", 
-                    PointsOfInterest = new List<PointsOfInterestDto>()
+                    PointsOfInterest = new List<PointOfInterestDto>()
                     {
-                        new PointsOfInterestDto()
+                        new PointOfInterestDto()
                         {
                             Id = 1, 
                             Name = "Central Park",
@@ -50,9 +50,9 @@ namespace CityInfo.API
                     Id = 3,
                     Name = "Paris",
                     Description = "Has a big tower",
-                    PointsOfInterest = new List<PointsOfInterestDto>()
+                    PointsOfInterest = new List<PointOfInterestDto>()
                     {
-                        new PointsOfInterestDto()
+                        new PointOfInterestDto()
                         {
                             Id = 1,
                             Name = "Central Park",
