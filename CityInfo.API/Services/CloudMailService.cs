@@ -4,16 +4,16 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CityInfo.API.MailService
+namespace CityInfo.API.Services
 {
-    public class LocalMailService : IMailService
+    public class CloudMailService : IMailService
     {
         private string _mailTo = Startup.Configuration["mailSettings:mailToAddress"];
         private string _mailFrom = Startup.Configuration["mailSettings:mailFromAddress"];
 
         public void Send(string subject, string message)
         {
-            Debug.WriteLine($"Mail From {_mailFrom} to {_mailTo}, using Local Mail Service");
+            Debug.WriteLine($"Mail From {_mailFrom} to {_mailTo}, using Cloud Mail Service");
             Debug.WriteLine($"Subject: {subject}");
             Debug.WriteLine($"Message: {message}");
         }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CityInfo.API.Entities;
-using CityInfo.API.MailService;
+using CityInfo.API.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using NLog.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
+using CityInfo.API.Models;
 
 namespace CityInfo.API
 {
@@ -50,16 +51,14 @@ namespace CityInfo.API
 #else
             services.AddTransient<IMailService, CloudMailService>();
 #endif
+            services.AddScoped<ICityInfoRepository, CityInfoRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, 
             ILoggerFactory loggerFactory, CityInfoContext cityInfoContext)
         {
-
             loggerFactory.AddConsole();
-
-            //loggerFactory.AddProvider(new NLog.Extensions.Logging.NLogLoggerProvider());
             loggerFactory.AddNLog();
             loggerFactory.AddDebug();
             cityInfoContext.EnsureSeedDataForContext();
@@ -73,6 +72,12 @@ namespace CityInfo.API
             {
                 app.UseExceptionHandler();
             }
+
+            AutoMapper.Mapper.Initialize(cfg =>
+            {
+                cfg.CreateMap<City, CityWithoutPointsOfInterestDto>();
+
+            });
 
             app.UseMvc();
 
